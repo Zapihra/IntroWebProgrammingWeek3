@@ -190,6 +190,30 @@ fetch("https://statfin.stat.fi/PxWeb/sq/4e244893-7761-4c4f-8e55-7a8d41d86eff").t
     cell1.innerHTML = oTowns[i];
     cell2.innerHTML = values[i];
   }
+  //had problems that the second data wasn't always loading
+  //https://stackoverflow.com/questions/40981040/using-a-fetch-inside-another-fetch-in-javascript
+  return fetch("https://statfin.stat.fi/PxWeb/sq/5e288b40-f8c8-4f1e-b3b0-61b86ce5c065");
+}).then(function (response2) {
+  return response2.json();
+}).then(function (data) {
+  var employments = data.dataset.value;
+  var table = document.getElementById("table");
+  var row = table.rows;
+  for (var i = 1; i - 1 < employments.length; i++) {
+    var cell1 = row[i].insertCell(2);
+    var cell2 = row[i].insertCell(-1);
+    cell1.innerHTML = employments[i - 1];
+    var person = row[i].cells[1].innerText;
+    var pr = (Number(employments[i - 1]) / Number(person) * 100).toFixed(2);
+    cell2.innerHTML = pr + "%";
+    if (pr > 45) {
+      row[i].style.backgroundColor = "#abffbd";
+    } else if (pr < 25) {
+      row[i].style.backgroundColor = "#ff9e9e";
+    }
+  }
+}).catch(function (errorMsg) {
+  console.log(errorMsg);
 });
 },{"./styles.css":"src/styles.css"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
