@@ -18,4 +18,26 @@ table {
   border-collapse: collapse;
   font-size: 16px;
   text-align: left;
+  table-layout: fixed;
+  width: 100%;
+}
+
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-child */
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+
+div.center {
+  margin: auto;
+  padding: 60px;
+  width: 60%;
+}
+
+h1 {
+  text-align: center;
 }
