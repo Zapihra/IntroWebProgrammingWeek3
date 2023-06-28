@@ -6,11 +6,13 @@ fetch("https://statfin.stat.fi/PxWeb/sq/4e244893-7761-4c4f-8e55-7a8d41d86eff")
   .then(data => {
     const towns = data.dataset.dimension.Alue.category.label;
     const values = data.dataset.value;
-    const table = document.getElementById("table");
+    const body = document.getElementById("table").getElementsByTagName("tbody");
     const oTowns = Object.values(towns);
+    
       
     for (let i = 0; i < oTowns.length; i++) {
-      const row = table.insertRow(-1);
+      
+      const row = body[0].insertRow(-1);
       
       const cell1 = row.insertCell(0);
       const cell2 = row.insertCell(1);

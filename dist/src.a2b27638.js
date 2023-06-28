@@ -181,10 +181,10 @@ fetch("https://statfin.stat.fi/PxWeb/sq/4e244893-7761-4c4f-8e55-7a8d41d86eff").t
 }).then(function (data) {
   var towns = data.dataset.dimension.Alue.category.label;
   var values = data.dataset.value;
-  var table = document.getElementById("table");
+  var body = document.getElementById("table").getElementsByTagName("tbody");
   var oTowns = Object.values(towns);
   for (var i = 0; i < oTowns.length; i++) {
-    var row = table.insertRow(-1);
+    var row = body[0].insertRow(-1);
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
     cell1.innerHTML = oTowns[i];
